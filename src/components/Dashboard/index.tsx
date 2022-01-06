@@ -5,7 +5,9 @@ import pointersIcon from '../../assets/icon-ellipsis.svg'
 
 import Data from '../../data.json'
 
-import './styles/styles.scss'
+import styles from  './styles/styles.module.scss'
+
+import './styles/cards.scss'
 
 export function Dashboard(){
 
@@ -17,51 +19,50 @@ export function Dashboard(){
     }
 
     return(
-        <div className="container">
-            <div className="main-card">  
-                <div className="report-description">
+        <div className={styles.container}>
+            <div className={styles.mainCard}>  
+                <div className={styles.reportDescription}>
                     <img src={jeremyAvatar} alt="Imagem de Jeremy" />
                     <div>
                         <p>Report for</p>
-                        <div className="name">Jeremy Robson</div>
+                        <div className={styles.name}>Jeremy Robson</div>
                     </div>
 
                 </div>
-                <div className="menu">
+                <div className={styles.menu}>
                     <button 
-                        className={'link' + (time === 'daily' ? ' link-active' : '')} 
+                        className = {time === 'daily' ? styles.linkActive : ''} 
                         onClick={()=>handleClickMenuOptions('daily')}> 
                         Daily
                     </button>
                     <button 
-                        className={'link' + (time === 'weekly' ? ' link-active' : '')} 
+                        className = {time === 'weekly'? styles.linkActive : ''} 
                         onClick={()=>handleClickMenuOptions('weekly')}>
                         Weekly
                     </button>
                     <button 
-                        className={'link' + (time === 'montly' ? ' link-active' : '')}
+                        className={time === 'montly' ? styles.linkActive : ''}
                         onClick={()=>handleClickMenuOptions('montly')}>
                         Montly
                     </button>
                 </div>
             </div>
-            {
-                Data.map(cards =>(
-                    <div key={cards.title} className={`card ${cards.title.toString().toLowerCase().replace(/\s+/g, '-')}`}>
-                        <div className="card-description">
+                {Data.map(cards =>(
+                    <div key={cards.title} className={styles.card} id={cards.title.toString().toLowerCase().replace(/\s+/g, '-')}>
+                        <div className={styles.cardDescription}>
                             <div>
-                                <div className="card-name">{cards.title}</div>
-                                <div className="pointers"><img src={pointersIcon} alt="" /></div>
+                                <div className={styles.cardName}>{cards.title}</div>
+                                <div className={styles.pointers}><img src={pointersIcon} alt="" /></div>
                             </div>
                             <div>
-                                <div className="hours">
+                                <div className={styles.hours}>
                                     {  
                                         time === 'daily' ? (cards.timeframes.daily.current + 'hrs') : 
                                         time === 'weekly' ? (cards.timeframes.weekly.current + 'hrs') :
                                         time === 'montly' ? (cards.timeframes.monthly.current + 'hrs') : ''
                                     }
                                 </div>
-                                <div className="description">
+                                <div className={styles.description}>
                                     {
                                     time === 'daily' ? 'Last Day - ' + (cards.timeframes.daily.previous + 'hrs') : 
                                     time === 'weekly' ? 'Last Week - ' + (cards.timeframes.weekly.previous + 'hrs') :
@@ -73,8 +74,7 @@ export function Dashboard(){
 
                         </div>
                     </div>
-                ))
-            }
+                ))}
         </div>
     )
 }

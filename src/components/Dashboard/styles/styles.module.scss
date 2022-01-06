@@ -9,12 +9,12 @@
     gap: 1.45rem;
 }
 
-.main-card{
+.mainCard{
     background-color: var(--dark-blue);
     border-radius: 1rem;
     width: 100%;
     
-    .report-description{
+    .reportDescription{
         background-color: var(--blue);
         border-radius: 1rem;
         padding: 2rem;
@@ -61,6 +61,7 @@
         padding: 1.5rem 0.25rem;
 
         button {
+            cursor: pointer;
             background-color:unset;
             border: none;
             color: var(--desaturated-blue);
@@ -70,7 +71,7 @@
             }
         }
 
-        .link-active{
+        .linkActive{
 
             background-color:unset;
             color: white;
@@ -84,14 +85,13 @@
     border-radius: 1rem;
     background-repeat:  no-repeat;
     background-position:  top -15px right 20px;
-    
 
-    .card-description{
+    .cardDescription{
         background-color: var(--dark-blue);
         margin-top:2.5rem;
         border-radius: 1rem;
         padding: 1.35rem;
-
+    
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -103,33 +103,33 @@
             background-color: var(--cards-hover);
             
         }
-
+    
         > :first-child{
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
             
-            .card-name{
+            .cardName{
                 color: white;
-                font-size: 1.15rem;
+                font-size: 1.3rem;
                 font-weight: 500;
             }
-
+    
             .pointers{
                 display: flex;
                 cursor: pointer;
                 transition: .3s;
-
+    
                 &:hover{
                     filter: brightness(2) ;
                 }
             }
-
+    
         }
-
+    
         > :last-child{
-
+    
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -140,45 +140,106 @@
                 font-size: 2.1rem;
                 font-weight: 300;
             }
-
+    
             .description{
                 color: var(--pale-blue);
                 font-size: 0.9rem;
             }
         }
     }
-
 }
 
-.work{
-    background-color: var(--work);
-    background-image: url(../../../assets/icon-work.svg);
+@media screen and(min-width: 570px){
+    
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mainCard{
+        grid-column: 1 / span 2;
+
+        > :last-child{
+            gap: 2.25rem
+        }
+    }
+
+    .card{
+        .cardDescription{
+            > :last-child{
+                flex-direction: column;
+                align-items: flex-start;
+
+                .hours{
+                    font-size: 2.25rem;
+                }
+            }
+        }
+    }
 }
 
-.play{
-    background-color: var(--play);
-    background-image: url(../../../assets/icon-play.svg);
-}
+@media screen and(min-width:1440px){
+    .container{
+          width: 85%;
+  
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap:2rem;
+    }  
+  
+    .mainCard{
+        grid-row: 1 / span 2;
+        grid-column: unset;
+        height: 100%;
+  
+        .reportDescription{
+          flex-direction: column;
+          align-items: flex-start;
+          height: 68%;
+          padding: 2.7rem 2rem;
+  
+          img{
+              width: 5rem;
+          }
+  
+          > :last-child{
+              margin-top: 1.6rem;
+  
+              .name{
+                  font-size: 2.25rem;
+              }
+          }
+        }
+  
+        .menu{
+            gap: 1.45rem;
+            height: 32%;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 1.25rem;
 
-.study{
-    background-color: var(--study);
-    background-image: url(../../../assets/icon-study.svg);
+            button{
+                font-size: 1.15rem;
+            }
+        }
+    }
+  
+    .card{
+        .cardDescription{
+            margin-top: 4rem;
+            padding: 1.75rem;
+  
+            > :last-child{
+                .hours{
+                  font-size: 2.75rem;
+                  padding-top: 0.9rem;
+                }
+  
+              .description{
+                  padding-top: 0.25rem;
+              }
+            }
+        }
+  
+        
+    }
 }
-
-.exercise{
-    background-color: var(--exercise);
-    background-image: url(../../../assets/icon-exercise.svg);
-}
-
-.social{
-    background-color: var(--social);
-    background-image: url(../../../assets/icon-social.svg);
-}
-
-.self-care{
-    background-color: var(--self-care);
-    background-image: url(../../../assets/icon-self-care.svg);
-}
-
-@import '570';
-@import '1440';
